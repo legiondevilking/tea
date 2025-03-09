@@ -12,6 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CutTextsPipe } from './pipes/cut-texts.pipe';
 import {ReactiveFormsModule} from "@angular/forms";
 import { PhonePipe } from './pipes/phone.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PhonePipe } from './pipes/phone.pipe';
     HeaderComponent,
     ProductComponent,
     CutTextsPipe,
-    PhonePipe
+    PhonePipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

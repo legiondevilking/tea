@@ -1,4 +1,4 @@
-export type catalogType = {
+export type CatalogType = {
   id: number,
   image: string,
   title: string,

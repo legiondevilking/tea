@@ -1,39 +1,95 @@
-<section class="order" id="order">
-    <div class="container">
-      <h2 id="order_title">Сделать заказ</h2>
-      <form class="row g-3 " id="form">
-        <div class="col-md-2">
-          <label for="validationDefault01" class="form-label">Имя</label>
-          <input type="text" class="form-control" id="validationDefault01">
-        </div>
-        <div class="col-md-2">
-          <label for="validationDefault02" class="form-label">Фамилия</label>
-          <input type="text" class="form-control" id="validationDefault02">
-        </div>
-        <div class="col-md-2">
-          <label for="validation06" class="form-label">Телефон</label>
-          <input type="text" class="form-control" id="validation06"
-                 aria-describedby="inputGroupPrepend2">
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <label for="validationDefault03" class="form-label">Страна</label>
-            <input type="text" class="form-control" id="validationDefault03">
-          </div>
-          <div class="col-md-3">
-            <label for="validationDefault04" class="form-label">Индекс</label>
-            <input type="text" class="form-control" id="validationDefault04">
+<section class="order d-flex justify-content-center" id="order">
+  <div class="container text-center mt-5 pt-4 order-form">
+    <h2 id="order_title" *ngIf="!orderSuccess">Сделать заказ</h2>
+    <form *ngIf="!orderSuccess" class="row g-3 d-flex flex-column align-items-center" id="form" [formGroup]="signInForm" (ngSubmit)="createOrder()">
+
+      <div class="col-md-6">
+        <label for="product" class="form-label">Продукт</label>
+        <input type="text" class="form-control" id="product" formControlName="product">
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <label for="name" class="form-label">Имя</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Введите имя">
+          <div class="w-100 mb-3" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            <div class="text-danger">
+              Имя введено неверно
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <label for="validationDefault05" class="form-label">Адрес</label>
-            <input type="text" class="form-control" id="validationDefault05">
+
+        <div class="col-md-4">
+          <label for="surname" class="form-label">Фамилия</label>
+          <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Введите фамилию">
+          <div class="w-100 mb-3" *ngIf="surname?.invalid && (surname?.dirty || surname?.touched)">
+            <div class="text-danger">
+              Фамилия введена неверно
+            </div>
           </div>
         </div>
-        <div class="col-12">
-          <a class="btn btn-primary" type="button" id="send">Отправить</a>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <label for="phone" class="form-label">Телефон</label>
+          <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="+7 (___) ___-__-__">
+          <div class="w-100 mb-3" *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+            <div class="text-danger">
+              Телефон введен неверно
+            </div>
+          </div>
         </div>
-      </form>
+
+        <div class="col-md-4">
+          <label for="country" class="form-label">Страна</label>
+          <input type="text" class="form-control" id="country" formControlName="country" placeholder="Страна доставки">
+          <div class="w-100 mb-3" *ngIf="country?.invalid && (country?.dirty || country?.touched)">
+            <div class="text-danger">
+              Страна введена неверно
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <label for="zip" class="form-label">Индекс</label>
+          <input type="text" class="form-control" id="zip" formControlName="zip" placeholder="123456">
+          <div class="w-100 mb-3" *ngIf="zip?.invalid && (zip?.dirty || zip?.touched)">
+            <div class="text-danger">
+              Индекс введен неверно
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label for="address" class="form-label">Адрес</label>
+          <input type="text" class="form-control" id="address" formControlName="address" placeholder="Улица, дом, квартира">
+          <div class="w-100 mb-3" *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+            <div class="text-danger">
+              Адрес введен неверно
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <label for="comment" class="form-label">Комментарий</label>
+        <textarea class="form-control" id="comment" formControlName="comment" rows="3" placeholder="Дополнительная информация"></textarea>
+      </div>
+
+      <div class="col-12 mt-3">
+        <button class="btn btn-primary" type="submit" id="send" [disabled]="signInForm.invalid || signInForm.disabled">Отправить</button>
+      </div>
+      <div *ngIf="orderError" class="text-danger mt-2">
+        Произошла ошибка. Попробуйте еще раз.
+      </div>
+    </form>
+    <div *ngIf="orderSuccess" class="text-success fs-4">
+      Спасибо за заказ!
     </div>
-  </section>
+  </div>
+</section>
+
+
