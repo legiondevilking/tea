@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="card">
+    <img src="{{product.image}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{product.title}}</h5>
+      <p class="card-text">{{product.description}}</p>
+      <p class="card-price">{{product.price}} руб </p>
+      <button class="btn btn-primary" (click)="navigateToOrder(product.title)">Купить</button>
+    </div>
+  </div>
+</div>
+
