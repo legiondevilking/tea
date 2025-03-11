@@ -1,8 +1,8 @@
 <section class="main">
-  <div class="container">
-    <h1>Наши чайные коллекции</h1>
-      <div class="row gy-4">
-          <div class="card col-md-4 col-sm-6 mb-3" *ngFor="let product of products">
+  <div class="container-lg">
+    <h1 class="text-center">Наши чайные коллекции</h1>
+      <div class="row gy-4 g-3">
+          <div class="card col-md-4 col-sm-6" *ngFor="let product of products">
             <img src="{{product.image}}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{product.title}}</h5>

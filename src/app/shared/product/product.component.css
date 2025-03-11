@@ -1,1 +1,7 @@
-
+.card-img-top{
+  width: 700px;
+}
+.card{
+  align-items: center;
+  width: 900px;
+}
